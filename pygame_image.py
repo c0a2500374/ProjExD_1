@@ -29,17 +29,28 @@ def main():
 
     #keyモジュール
         key_lst = pg.key.get_pressed()
-        if key_lst[pg.K_UP]:
-            kk_rct.move_ip((0,-1))
 
-        if key_lst[pg.K_DOWN]:
-            kk_rct.move_ip((0,1))
+        no_key = 1 #演習1
+        move_X=0
+        move_Y=0
+
+        if key_lst[pg.K_UP]:
+            move_Y = -1
+            no_key = 0
+
+        if key_lst[pg.K_DOWN]:  
+            move_Y = 1
+            no_key = 0
 
         if key_lst[pg.K_RIGHT]:
-            kk_rct.move_ip((1,0))
+            move_X = 1
+            no_key = 0
 
         if key_lst[pg.K_LEFT]:
-            kk_rct.move_ip((-1,0))
+            move_X = -1
+            no_key = 0
+
+        kk_rct.move_ip((move_X - no_key,move_Y)) #演習2
 
         x = -tmr
         x = tmr%3200 #練習9
